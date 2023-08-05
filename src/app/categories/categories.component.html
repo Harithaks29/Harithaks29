@@ -1,0 +1,38 @@
+<div class="movie">
+  <div class="grid">
+    <div class="row" *ngFor="let movie of movies">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <img [src]="movie.img" alt="..." />
+          <h5 class="card_title">id : {{ movie.id }}</h5>
+          <p class="card-text">movie name : {{ movie.name }}</p>
+          <h2 class="card-text" *ngIf="movie.pay != '250'">{{ movie.pay }}</h2>
+          <p class="card-text">movie type : {{ movie.type }}</p>
+          <a href="#" class="btn btn-primary">watch</a>
+          <button (click)="selectmovie()" class="btn btn-primary">
+            Select movie
+          </button>
+          <hr />
+         
+          <br />
+          <div [ngSwitch]="movie.specialtag">
+            <div *ngSwitchCase="'a'">aaaa</div>
+            <br />
+            <div
+              [ngStyle]="{
+                'background-color': movie.style == 1 ? 'green' : 'red'
+              }"
+            >
+              Download
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<button (click)="addmovie()">addmovie</button>
+<hr />
+<h4>SELECTED MOVIE</h4>
+<app-trail1></app-trail1>

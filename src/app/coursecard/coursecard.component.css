@@ -1,0 +1,19 @@
+.courseImage{
+    height:220px;
+    width:auto;
+}
+
+.card-text.active{
+    color:purple;
+    font-size:large;
+    background:lightblue;
+    text-align:center;
+    margin:5px;
+    border-radius:5px
+
+}
+
+.error{
+    color:maroon;
+    font-size:10px;
+}

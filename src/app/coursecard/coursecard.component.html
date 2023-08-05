@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-body">
+      <img class="courseImage" src="{{ course.image }}" />
+      <h5 class="card-title">
+        {{ course.course }}
+      </h5>
+
+      <div class="card-text">
+        {{ course.faculty }}
+        <span
+          [ngStyle]="{ 'background-color': 'green' }"
+          class="badge badge-secondary"
+          >{{ course.facultyLoves }}</span>
+      </div>
+
+      <div class="card-text" *ngIf="!course.faculty">
+        No Faculty Assigned
+      </div>
+
+      <div
+        [ngSwitch]="course.specialTag"
+        [ngStyle]="{
+          'font-weight': course.specialTag === 'hot' ? '500' : '200'
+        }"
+      >
+        <div *ngSwitchCase="'hot'">HOT!</div>
+        <div *ngSwitchCase="'Selling out fast'">SELLING OUT FAST</div>
+        <div *ngSwitchDefault>SEE YOU SOON!</div>
+      </div>
+
+      <div class="card-text" [ngStyle]="{ color: getColor(course.likes) }">
+        Likes
+        {{ course.likes }}
+      </div>
+
+      <div class="card-text" [class.active]="course.isSpecial">
+        Special Status : {{ course.isSpecial }}
+      </div>
+
+      <div
+        class="card-text"
+        [ngClass]="{
+          'text-success': course.location === 'UK',
+          'text-primary': course.location === 'France',
+          'text-danger': course.location === 'US'
+        }"
+      >
+        {{ course.location }}
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <!-- <button
+        class="btn btn-border pull-right"
+        [disabled]="!course.enabled"
+        (click)="onEnroll($event)"
+      >
+        Enroll
+      </button> -->
+      <!-- <button type="reset" class="btn btn-default" (click)="select(courseForm)">select</button>
+      <button class="btn btn-border pull-right"(click)="editCourse(course)">edit</button> -->
+    </div>
+  </div>
